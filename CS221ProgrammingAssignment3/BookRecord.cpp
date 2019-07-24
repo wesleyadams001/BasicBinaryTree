@@ -11,7 +11,7 @@
 #include <string.h>
 #include <cmath>
 
-#define DEBUG
+//#define DEBUG
 using namespace std;
 
 //The default constructor

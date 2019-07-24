@@ -10,7 +10,7 @@
 #include <string.h>
 #include <cmath>
 
-#define DEBUG
+//#define DEBUG
 using namespace std;
 
 // Class constructor
@@ -154,7 +154,7 @@ BookRecord *Book_Database::removeBook(long stockNum)
 	//Didnt find
 	if(temp==NULL)
 	{
-		cout<<"Did not find book"<<endl;
+		//cout<<"Did not find book"<<endl;
 		return NULL;
 	}
 	else
@@ -241,7 +241,7 @@ BookRecord *Book_Database::removeBook(long stockNum)
 			back->m_pRight = temp->m_pLeft;
 		}
 		delete temp;
-		return delNode;
+		return rec;
 		
 	}
 		
@@ -271,7 +271,7 @@ BookRecord *Book_Database::searchByStockNumber(long stockNum)
 	if(temp == NULL)
 	{
 		//return null if did not find
-		cout<<"Did not find target stock number"<<endl;
+		//cout<<"Did not find target stock number"<<endl;
 		return NULL;
 	}
 	else
@@ -357,7 +357,7 @@ void Book_Database::ClearDatabase(BookRecord *rt)
 	// Nothing to clear
 	if(rt==NULL) 
 	{
-		cout<<"Empty Database"<<endl;
+		//cout<<"Empty Database"<<endl;
 		return;
 	}
 
@@ -430,7 +430,7 @@ void Book_Database::searchByClassification(int cl, BookRecord *rt)
 	// Nothing to print
 	if(rt==NULL) 
 	{
-		cout<<"No matching classifications"<<endl;
+		//cout<<"No matching classifications"<<endl;
 		return;
 	}
 
@@ -469,7 +469,7 @@ void Book_Database::searchByCost(double min, double max, BookRecord *rt)
 	// Nothing to print
 	if(rt==NULL) 
 	{
-		cout<<"No items with cost in the given interval"<<endl;
+		//cout<<"No items with cost in the given interval"<<endl;
 		return;
 	}
 
@@ -506,20 +506,22 @@ void Book_Database::PrintDatabase(BookRecord *rt)
 	// Nothing to print
 	if(rt==NULL) 
 	{
-		cout<<"Empty database nothing to print"<<endl;
+		//cout<<"Empty database nothing to print"<<endl;
 		return;
 	}
 
-	//print the record
-	char title[128];
-	rt->getTitle(title);
-	cout<<title<< " " <<rt->getStockNum()<<" " <<rt->getClassification()<< " $" <<rt->getCost()<< " " <<rt->getNumberInStock()<<endl;
+	
 
 	// Print left sub-tree
 	if(rt->m_pLeft != NULL) 
 	{
 		PrintDatabase(rt->m_pLeft);
 	}
+
+	//print the record
+	char title[128];
+	rt->getTitle(title);
+	cout<<title<< " " <<rt->getStockNum()<<" " <<rt->getClassification()<< " $" <<rt->getCost()<< " " <<rt->getNumberInStock()<<endl;
 
 	// Print right sub-tree
     if(rt->m_pRight != NULL)

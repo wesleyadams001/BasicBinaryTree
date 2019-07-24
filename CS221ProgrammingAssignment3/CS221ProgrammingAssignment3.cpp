@@ -27,9 +27,13 @@ int main()
 	cout<<"\n\nRemove book test:\n"<<endl;
 	cout<<"Removing book"<<endl;
 	Inv->removeBook(7777);
-	Inv->removeBook(5678);
+	BookRecord *removedBook = Inv->removeBook(5678);
+	//printing removed record
+	cout<<"Printing removed book record"<<endl;
+	removedBook->printRecord();
+	cout<<"Printing the database"<<endl;
 	Inv->PrintDatabase();
-
+	cin>>c;
 	//Search by stock number test
 	cout<<"\n\nSearch by stock number: \n"<<endl;
 	BookRecord *x = Inv->searchByStockNumber(2345);
@@ -46,8 +50,14 @@ int main()
 	
 	//search by cost test
 	cout<<"\n\nGet cost test:\n"<<endl;
-	cout<<"Those records whose cost is in the following interval:"<<endl;
+	cout<<"Those records whose cost is in the following interval:25.00,30.00"<<endl;
 	Inv->searchByCost(25.00,30.00);
+	cout<<"Those records whose cost is in the following interval:20.00, 25.00"<<endl;
+	Inv->searchByCost(20.00, 25.00);
+	cout<<"Those records whose cost is in the following interval:25.00,60.00"<<endl;
+	Inv->searchByCost(25.00,60.00);
+	cout<<"Those records whose cost is in the following interval:60.00,100.00"<<endl;
+	Inv->searchByCost(60.00,100.00);
 
 	//Get number in stock test
 	cout<<"\n\n Get number in stock test:\n"<<endl;
@@ -60,14 +70,17 @@ int main()
 	//Add double test
 	cout<<"\n\nRe-Add test print:\n"<<endl;
 	BookRecord *aBook2 = new BookRecord("A Tested Title", 7777, 777, 65.65);
-	BookRecord *aBook3 = new BookRecord("A Tested Title", 7777, 777, 65.65);
+	BookRecord *aBook3 = new BookRecord("A Tested Title2", 7778, 777, 70.65);
+	BookRecord *aBook4 = new BookRecord("A Tested Title3", 7779, 771, 70.12);
 	Inv->addBook(aBook2);
+	Inv->addBook(aBook3);
+	Inv->addBook(aBook4);
 	//Inv->addBook(aBook3);
 	Inv->PrintDatabase();
 
 	//Search by classification for new book
 	cout<<"\n\nSearch for books that match classification:\n"<<endl;
-	Inv->searchByClassification(777);
+	Inv->searchByClassification(900);
 
 
 	//Destructor test
